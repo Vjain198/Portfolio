@@ -13,7 +13,7 @@ const ResponsiveMenu = ({ isOpen }: { isOpen: boolean }) => {
           exit={{ opacity: 0, y: -100 }}
           className="absolute top-20 left-0 w-full h-screen z-20"
         >
-          <div className="text-xl bg-white text-dark uppercase py-5 m-5 rounded">
+          <div className="text-xl font-serif bg-white text-dark uppercase py-5 m-5 rounded">
             <ul className="flex flex-col gap-5 items-center w-full ">
               {NavbarMenu.map((item, index) => (
                 <li key={index}>
