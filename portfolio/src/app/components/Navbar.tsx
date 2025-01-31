@@ -2,7 +2,7 @@
 
 import React from "react";
 import { NavbarMenu } from "../constants/NavbarMenu";
-import { MdMenu } from "react-icons/md";
+import { MdClose, MdMenu } from "react-icons/md";
 import ResponsiveMenu from "./ResponsiveMenu";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className="flex justify-between items-center md:px-20 md:py-4">
         <h2 className="text-2xl text-white ">Vikash Jain</h2>
         <div className="hidden md:block">
-          <ul className=" flex  md:items-center md:gap-6 ">
+          <ul className=" flex md:items-center md:gap-6 ">
             {NavbarMenu.map((item, index) => (
               <li key={index}>
                 <a
@@ -25,9 +25,13 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div onClick={() => setIsOpen(!isOpen)}>
+        </div>
+        <div onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? (
+            <MdClose className="md:hidden cursor-pointer text-3xl" />
+          ) : (
             <MdMenu className="md:hidden cursor-pointer text-3xl" />
-          </div>
+          )}
         </div>
       </nav>
       <ResponsiveMenu isOpen={isOpen} />
