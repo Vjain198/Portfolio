@@ -1,9 +1,16 @@
+import AboutUs from "./components/AboutUs";
 
+import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
+import WorkHistorySection from "./components/WorkHistorySection";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Personal Portfolio
+    <div className="p-6 h-full relative">
+      <Navbar />
+      <HeroSection />
+      <AboutUs />
+      <WorkHistorySection />
     </div>
   );
 }
