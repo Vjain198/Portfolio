@@ -6,6 +6,7 @@ import { Github, Instagram, Linkdin } from "../constants/Icons";
 import Link from "next/link";
 import { saveAs } from "file-saver";
 import { Separator } from "./Separator";
+import Image from "next/image";
 
 const downloadResume = () => {
   saveAs(
@@ -17,13 +18,24 @@ const downloadResume = () => {
 const AboutUs = () => {
   return (
     <>
-      <div className="gap-5 flex flex-col md:flex-row justify-center md:justify-between md:items-center md:py-4 md:gap-10">
-        <h2 className="text-3xl md:text-5xl mt-2 font-serif uppercase md:min-w-[200px]">
-          About Myself
-        </h2>
+      <div className="gap-5 flex my-3 md:my-0 flex-col md:flex-row justify-center md:justify-between md:items-center md:py-4 md:gap-10">
+        <div className="my-3 flex justify-center md:w-[700px]">
+          <Image
+            src="/myself.webp"
+            alt="profile"
+            width={500}
+            height={500}
+            objectFit="contain"
+            className="rounded-full border border-white shadow-white shadow-lg"
+          />
+        </div>
         <div className="md:w-[700px]">
+          <h2 className="text-3xl md:text-5xl mt-3  uppercase md:min-w-[200px]">
+            About Myself 👇
+          </h2>
+          <Separator className="my-2 md:my-5" />
           <p className="text-md md:text-xl text-start">
-            Results-driven Software Developer with over 4 years of extensive
+            Results Oriented Software Developer with over 4 years of extensive
             experience in designing and implementing user-friendly web
             interfaces. Proficient in <b>JavaScript</b> and skilled in
             leveraging front-end libraries such as <b>React.js</b> to create
@@ -40,7 +52,7 @@ const AboutUs = () => {
           </p>
           <div className="my-2 md:my-5 md:w-full md:p-2 md:flex md:justify-between md:items-center cursor-pointer">
             <Button downloadResume={downloadResume} />
-            <div className="hidden md:flex md:gap-10 md:items-center">
+            <div className="flex justify-between md:gap-10 px-3 pt-5 items-center">
               <Link
                 href="https://www.linkedin.com/in/vjain198/"
                 target="_blank"

@@ -7,7 +7,7 @@ import { Separator } from "./Separator";
 const HeroSection = () => {
   return (
     <>
-      <div className=" text-white py-12 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center">
+      <div className=" text-white py-10 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center">
         <div className="flex flex-col items-center gap-[1rem] md:w-[800px] md:gap-[2rem] text-center">
           <h1 className="text-2xl font-semibold md:text-4xl md:font-bold font-serif">
             Namaste 🙏,
@@ -47,7 +47,7 @@ const HeroSection = () => {
           className="border rounded-xl border-white shadow-white shadow-lg"
         />
       </div>
-      <Separator className="my-3" />
+      <Separator className="" />
     </>
   );
 };
