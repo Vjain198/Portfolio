@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
         </nav>
       </nav>
-      <ResponsiveMenu isOpen={isOpen} />
+      <ResponsiveMenu isOpen={isOpen}  setIsOpen={setIsOpen}/>
     </>
   );
 };
