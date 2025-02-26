@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const WorkHistorySection = () => {
   return (
-    <div className="w-full">
+    <div id="experience" className="w-full">
       <div className="flex items-center gap-5 md:gap-3 md:pt-5">
         <h2 className="text-3xl mt-1 md:mt-0 md:text-5xl uppercase">
           My Experiences

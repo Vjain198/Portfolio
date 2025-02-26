@@ -1,26 +1,22 @@
 export const NavbarMenu = [
   {
     name: "Home",
-    href: "#home",
+    href: "home",
   },
   {
     name: "About",
-    href: "#about",
+    href: "about",
   },
   {
     name: "Experience",
-    href: "#experience",
+    href: "experience",
   },
   {
     name: "Skills",
-    href: "#skills",
-  },
-  {
-    name: "Projects",
-    href: "#projects",
+    href: "skills",
   },
   {
     name: "Contact",
-    href: "#contact",
+    href: "contact",
   },
 ];

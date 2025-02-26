@@ -59,7 +59,7 @@ const ContactForm = () => {
           <ThanksCard setOpen={setOpen} />
         </BasicModal>
       ) : (
-        <div className="mx-auto">
+        <div id="contact" className="mx-auto">
           <div className="max-w-md mx-auto px-8 py-6 bg-gray-100 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">
               Contact Us

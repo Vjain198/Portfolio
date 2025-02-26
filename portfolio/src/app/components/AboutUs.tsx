@@ -18,7 +18,10 @@ const downloadResume = () => {
 const AboutUs = () => {
   return (
     <>
-      <div className="gap-5 flex my-3 md:my-0 flex-col md:flex-row justify-center md:justify-between md:items-center md:py-4 md:gap-10">
+      <div
+        id="about"
+        className="gap-5 flex my-3 md:my-0 flex-col md:flex-row justify-center md:justify-between md:items-center md:py-4 md:gap-10"
+      >
         <div className="my-3 flex justify-center md:w-[700px]">
           <Image
             src="/myself.webp"

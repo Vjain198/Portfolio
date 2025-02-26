@@ -7,14 +7,14 @@ import { Separator } from "./Separator";
 const HeroSection = () => {
   return (
     <>
-      <div className=" text-white py-10 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center">
+      <div
+        id="home"
+        className="text-white py-10 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center"
+      >
         <div className="flex flex-col items-center gap-[1rem] md:w-[800px] md:gap-[2rem] text-center">
           <h1 className="text-2xl font-semibold md:text-4xl md:font-bold font-serif">
-            Namaste 🙏,
+            Namaste 🙏
           </h1>
-          <p className="text-xl font-semibold md:text-4xl md:font-bold font-serif">
-            Welcome to the Frontend World 🌍
-          </p>
           <TypeAnimation
             sequence={[
               500,
