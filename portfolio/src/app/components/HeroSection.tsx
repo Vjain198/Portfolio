@@ -2,15 +2,11 @@
 import Image from "next/image";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import { Separator } from "./Separator";
 
 const HeroSection = () => {
   return (
     <>
-      <div
-        id="home"
-        className="text-white py-10 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center"
-      >
+      <div className="text-white py-10 md:py-12 flex flex-col gap-10 md:flex-row md:justify-around md:items-center">
         <div className="flex flex-col items-center gap-[1rem] md:w-[800px] md:gap-[2rem] text-center">
           <h1 className="text-2xl font-semibold md:text-4xl md:font-bold font-serif">
             Namaste 🙏
@@ -44,10 +40,9 @@ const HeroSection = () => {
           width={500}
           height={500}
           objectFit="contain"
-          className="border rounded-xl border-white shadow-white shadow-lg"
+          className="rounded-full"
         />
       </div>
-      <Separator className="" />
     </>
   );
 };

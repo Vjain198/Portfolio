@@ -52,8 +52,4 @@ export const skills = [
     name: "Jira",
     icon: "./jira.svg",
   },
-  {
-    name: "Puppeteer",
-    icon: "./puppeteer.svg",
-  },
 ];

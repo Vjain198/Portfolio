@@ -1,155 +1,31 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import Loader from "./Loader";
 
-const Button = ({ downloadResume }: { downloadResume: () => void }) => {
+const Button = ({
+  downloadResume,
+  title = "Button",
+}: {
+  title: string;
+  downloadResume: () => void;
+}) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      downloadResume();
+      setLoading(false);
+    }, 3000);
+  };
   return (
-    <StyledWrapper>
-      <div
-        className="button md:w-[200px]"
-        data-tooltip="Download"
-        onClick={downloadResume}
-      >
-        <div className="button-wrapper">
-          <div className="text font-serif">Download Resume </div>
-          <span className="icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              role="img"
-              width="2em"
-              height="2em"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-    </StyledWrapper>
+    <button
+      onClick={handleClick}
+      className=" w-full md:w-[200px] bg-white text-dark font-bold font-sans text-md md:text-lg py-2 px-4 border border-white-500 rounded-md"
+      disabled={loading}
+    >
+      {loading ? <Loader loading={loading} color="##000000" /> : title}
+    </button>
   );
 };
-
-const StyledWrapper = styled.div`
-  .button {
-    --height: 35px;
-    --tooltip-height: 35px;
-    --tooltip-width: 90px;
-    --gap-between-tooltip-to-button: 18px;
-    --button-color: #fff;
-    --tooltip-color: #fff;
-    height: var(--height);
-    background: var(--button-color);
-    position: relative;
-    text-align: center;
-    border-radius: 0.45em;
-    transition: background 0.3s;
-  }
-
-  .button::before {
-    position: absolute;
-    content: attr(data-tooltip);
-    width: var(--tooltip-width);
-    height: var(--tooltip-height);
-    background-color: var(--tooltip-color);
-    font-size: 0.9rem;
-    color: #000;
-    border-radius: 0.25em;
-    line-height: var(--tooltip-height);
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
-    left: calc(50% - var(--tooltip-width) / 2);
-  }
-
-  .button::after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: var(--tooltip-color);
-    left: calc(50% - 10px);
-    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
-  }
-
-  .button::after,
-  .button::before {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s;
-  }
-
-  .text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .button-wrapper,
-  .text,
-  .icon {
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    color: #000;
-  }
-
-  .text {
-    top: 0;
-  }
-
-  .text,
-  .icon {
-    transition: top 0.5s;
-  }
-
-  .icon {
-    color: #fff;
-    top: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .button:hover {
-    background: #fff;
-  }
-
-  .button:hover .text {
-    top: -100%;
-  }
-
-  .button:hover .icon {
-    top: 0;
-    color: #000;
-  }
-
-  .button:hover:before,
-  .button:hover:after {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .button:hover:after {
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
-  }
-
-  .button:hover:before {
-    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
-  }
-`;
 
 export default Button;
