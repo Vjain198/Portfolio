@@ -38,11 +38,11 @@ const ExperienceCard = () => {
               Truemeds India
             </span>
             <div className="my-2">
-              <p className="font-bold text-xl w-max text-white">
+              <p className="font-bold text-xl w-max text-dark">
                 Software Developer
               </p>
             </div>
-            <div className="text-md  min-w-[250px] text-white">
+            <div className="text-md  min-w-[250px] text-dark">
               I am developing and Maintaining the internal portals of the
               organization using React. Implement Nodejs Service to generate pdf
               from HTML5 for the marketing team and create email template using
@@ -78,21 +78,21 @@ const ExperienceCard = () => {
             </svg>
           </div>
           <div data-child="body">
-            <span className="font-extrabold text-2xl  text-white">
+            <span className="font-extrabold text-2xl  text-dark">
               Pristyn Care
             </span>
             <div className="my-3">
-              <p className="font-bold text-xl w-max text-white">
+              <p className="font-bold text-xl w-max text-dark">
                 Frontend Developer
               </p>
             </div>
-            <div className="text-md  min-w-[250px] text-white">
+            <div className="text-md  min-w-[250px] text-dark">
               Building and implementing visually appealing user interfaces using
               ReactJS and Next.js. Ensuring the website/application is
               responsive and works seamlessly across different devices and
               screen sizes.
             </div>
-            <div className="text-lg w-max mt-3 text-white">
+            <div className="text-lg w-max mt-3 text-dark">
               Nov 2022 - Feb 2024
             </div>
           </div>
@@ -122,21 +122,21 @@ const ExperienceCard = () => {
             </svg>
           </div>
           <div data-child="body">
-            <span className="font-extrabold text-2xl  text-white">
+            <span className="font-extrabold text-2xl  text-dark">
               Aspire Nxt
             </span>
             <div className="my-3">
-              <p className="font-bold text-xl w-max text-white">
+              <p className="font-bold text-xl w-max text-dark">
                 Front End Associate
               </p>
             </div>
-            <div className="text-md  min-w-[250px] text-white">
+            <div className="text-md  min-w-[250px] text-dark">
               Assisting in building and implementing user interfaces using
               ReactJS and Next.js under the guidance of senior
               developers.Learning to create visually appealing and responsive
               web pages for different devices and screen sizes.
             </div>
-            <div className="text-lg w-max mt-3 text-white">
+            <div className="text-lg w-max mt-3 text-dark">
               Nov 2022 - Feb 2024
             </div>
           </div>

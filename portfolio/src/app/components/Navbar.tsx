@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="flex justify-between items-center md:px-20 md:py-4 w-full">
-        <h2 className=" font-semibold font-serif text-xl md:text-2xl text-white uppercase">
+        <h2 className=" font-semibold font-serif text-xl md:text-2xl text-dark uppercase">
           Vikash Jain
         </h2>
         <nav>
@@ -22,7 +22,7 @@ const Navbar = () => {
                   to={item.href}
                   smooth={true}
                   duration={800}
-                  className="inline-block text-xl  px-4 py-2  text-white hover:bg-white hover:text-dark font-semibold cursor-pointer rounded"
+                  className="inline-block text-xl  px-4 py-2  text-dark hover:bg-white hover:text-dark font-semibold cursor-pointer rounded"
                 >
                   {item.name}
                 </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
         </nav>
       </nav>
-      <ResponsiveMenu isOpen={isOpen}  setIsOpen={setIsOpen}/>
+      <ResponsiveMenu isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 };

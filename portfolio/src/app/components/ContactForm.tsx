@@ -5,7 +5,9 @@ import { db } from "@/app/firebaseConfig";
 import BasicModal from "./Modal";
 import ThanksCard from "./ThanksCard";
 import { message } from "antd";
-// creating function to store data in firestore
+import emailjs from "@emailjs/browser"; // ✅ install emailjs: npm install @emailjs/browser
+
+// Firestore save function
 async function addDataToFireStore(
   name: string,
   mobileNumber: string,
@@ -18,6 +20,7 @@ async function addDataToFireStore(
       mobileNumber,
       email,
       message,
+      createdAt: new Date(),
     });
     console.log("Data added successfully", docRef.id);
     return true;
@@ -33,25 +36,49 @@ const ContactForm = () => {
   const [email, setEmail] = useState("");
   const [messages, setMessage] = useState("");
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
-  const handleSumbit = async (
-    e: React.FormEvent<HTMLFormElement | HTMLButtonElement>
-  ) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message || !mobileNumber) {
-      messageApi.error("All Details Required");
+    if (!name || !email || !messages || !mobileNumber) {
+      messageApi.error("⚠️ All fields are required!");
       return;
     }
-    const data = await addDataToFireStore(name, mobileNumber, email, messages);
-    if (data) {
+
+    setLoading(true);
+
+    // Save in Firestore
+    const saved = await addDataToFireStore(name, mobileNumber, email, messages);
+
+    // Send via EmailJS
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name,
+          email,
+          mobileNumber,
+          message: messages,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      console.log("Email sent successfully ✅");
+    } catch (err) {
+      console.error("Email sending failed ❌", err);
+    }
+
+    setLoading(false);
+
+    if (saved) {
       setOpen(true);
       setName("");
       setMobileNumber("");
       setEmail("");
       setMessage("");
     } else {
-      alert("Something went wrong");
+      messageApi.error("Something went wrong. Try again.");
     }
   };
 
@@ -64,77 +91,78 @@ const ContactForm = () => {
       ) : (
         <>
           {contextHolder}
-          <div id="contact" className="mx-auto">
-            <div className="max-w-md mx-auto px-8 py-6 bg-gray-100 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                Contact Us
+          <div id="contact" className="mx-auto py-12">
+            <div className="max-w-lg mx-auto px-8 py-8 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 transition hover:shadow-yellow-500/30">
+              <h2 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">
+                Get in Touch ✉️
               </h2>
-              <form onSubmit={handleSumbit}>
-                <div className="mb-4">
-                  <label className="block text-gray-800 mb-1" htmlFor="name">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Name */}
+                <div>
+                  <label className="block text-gray-700 dark:text-gray-300 mb-1">
                     Your Name
                   </label>
                   <input
-                    className="w-full px-4 py-2 text-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-yellow-500 outline-none"
                     placeholder="Enter your name"
-                    type="text"
-                    name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-gray-800 mb-1" htmlFor="name">
+
+                {/* Mobile */}
+                <div>
+                  <label className="block text-gray-700 dark:text-gray-300 mb-1">
                     Mobile Number
                   </label>
                   <input
-                    className="w-full px-4 py-2 text-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-yellow-500 outline-none"
                     placeholder="Enter your number"
-                    type="number"
-                    name="number"
                     value={mobileNumber}
                     onChange={(e) => setMobileNumber(e.target.value)}
                     maxLength={10}
                     required
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-gray-800 mb-1" htmlFor="email">
+
+                {/* Email */}
+                <div>
+                  <label className="block text-gray-700 dark:text-gray-300 mb-1">
                     Your Email
                   </label>
                   <input
-                    className="w-full px-4 py-2 text-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-yellow-500 outline-none"
                     placeholder="Enter your email"
-                    name="email"
-                    id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-gray-800 mb-1" htmlFor="message">
+
+                {/* Message */}
+                <div>
+                  <label className="block text-gray-700 dark:text-gray-300 mb-1">
                     Your Message
                   </label>
                   <textarea
-                    className="w-full px-4 py-2 text-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition duration-300"
+                    className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus:ring-2 focus:ring-yellow-500 outline-none"
                     rows={4}
                     placeholder="Enter your message"
-                    name="message"
-                    id="message"
                     value={messages}
                     onChange={(e) => setMessage(e.target.value)}
                     required
                   />
                 </div>
+
+                {/* Submit Button */}
                 <button
-                  className="w-full bg-dark text-white py-2 px-4 rounded-lg"
                   type="submit"
-                  onClick={handleSumbit}
+                  disabled={loading}
+                  className="w-full py-3 rounded-lg bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold shadow-lg hover:opacity-90 transition disabled:opacity-50"
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

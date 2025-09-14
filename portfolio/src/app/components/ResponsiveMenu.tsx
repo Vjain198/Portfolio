@@ -27,7 +27,7 @@ const ResponsiveMenu = ({
                     to={item.href}
                     smooth={true}
                     duration={800}
-                    className="hover:bg-dark hover:text-white cursor-pointer rounded py-2 px-4"
+                    className="hover:bg-dark hover:text-dark cursor-pointer rounded py-2 px-4"
                     onClick={() => setIsOpen(!isOpen)}
                   >
                     {item.name}
