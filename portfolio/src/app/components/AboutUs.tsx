@@ -39,7 +39,7 @@ const AboutUs = () => {
           {/* Social Icons */}
           <div className="flex gap-6 pt-5">
             <Link
-              href="https://www.linkedin.com/in/vjain198/"
+              href="https://www.linkedin.com/in/dev-vikash/"
               target="_blank"
               aria-label="LinkedIn"
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-yellow-500 hover:text-white transition"

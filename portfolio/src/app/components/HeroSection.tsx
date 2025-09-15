@@ -29,7 +29,7 @@ const HeroSection = () => {
             View Projects
           </Link>
           <Link
-            href="https://drive.google.com/file/d/18hIC6zAEa5otrmfxYaon1M3ep-PF4PJ1/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1ts7uOIiKzCQ-zFavrTHY0ItsRLVSEOXd/view?usp=drive_link"
             target="_blank"
             className="px-5 py-2 rounded-lg border border-yellow-500 text-yellow-600 font-medium hover:bg-yellow-500 hover:text-white transition"
           >
