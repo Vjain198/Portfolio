@@ -137,7 +137,7 @@ const ExperienceCard = () => {
               web pages for different devices and screen sizes.
             </div>
             <div className="text-lg w-max mt-3 text-dark">
-              Nov 2022 - Feb 2024
+              Feb 2021 - Nov 2022
             </div>
           </div>
         </div>
